@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  price: 1
+  species: MyString
+  pot: MyString
+  light: 1
+  size: 1
+  description: MyText
+  postage: MyString
+
+two:
+  user: two
+  name: MyString
+  price: 1
+  species: MyString
+  pot: MyString
+  light: 1
+  size: 1
+  description: MyText
+  postage: MyString
