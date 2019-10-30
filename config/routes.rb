@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/plants/new", to: "plants#new", as: "new_plant"
   get "/plants/:id", to: "plants#show", as: "plant"
   patch "/plants/:id", to: "plants#update"
-  get "/plants/:id/edit", to: "plants#edit", as: "edit_milkshake"
+  get "/plants/:id/edit", to: "plants#edit", as: "edit_plant"
   delete "/plants/:id", to: "plants#destroy"
   get "/payment/success", to: "payments#success", as: "success_payment"
   post "/payment/webhook", to: "payments#webhook", as: "webhook_payment"

@@ -5,7 +5,8 @@ class PlantsController < ApplicationController
     # investgate set_user_plant?
 
     def index
-        @plant = Plants.all
+        @plants = Plant.all
+        @address = Address.all
     end
 
     def new
