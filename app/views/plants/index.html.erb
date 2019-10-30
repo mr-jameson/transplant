@@ -1,10 +1,9 @@
 <h1>Plant Listings</h1>
 
-
 <% for plant in @plants %>
 <div class="card">
         <%= image_tag plant.image if plant.image.attached? %>
-        <p><%= plant.name %></p>
+        <h2><%= plant.name %></h2>
         <p><%= plant.price %></p>
         <p><%= plant.description %></p>
         <p><%= plant.light %></p>
