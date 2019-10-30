@@ -7,12 +7,24 @@
         <%= form.text_field :name %>
     </div>
     <div>
-        <%= form.label :description %>
-        <%= form.text_area :description %>
+        <%= form.label :species %>
+        <%= form.text_field :species %>
     </div>
     <div>
-        <%= form.label :price, "Price (in cents)" %>
+        <%= form.label :price%>
         <%= form.number_field :price, min: 0 %>
+    </div>
+    <div>
+        <%= form.label :light %>
+        <%= form.text_field :light %>
+    </div>
+    <div>
+        <%= form.label :size %>
+        <%= form.text_field :size %>
+    </div>
+    <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
     </div>
     <div>
         <%= form.label :image %>

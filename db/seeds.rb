@@ -13,7 +13,7 @@ for i in 1..20
         name: Faker::Name.name,
         email: Faker::Internet.free_email,
         password: "Testing123",
-        mobile: "0#{rand(408000000..499999999)}",
+        mobile: "+61#{rand(408000000..499999999)}",
         description: Faker::Quote.matz,
         created_at: Time.now
     )
@@ -65,5 +65,3 @@ for i in 1..20
     p "Created #{i} addresses"
 end
 
-
-# (io: temp_milkshake_file, filename: File.basename(temp_milkshake_file.path))
