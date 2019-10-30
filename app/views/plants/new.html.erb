@@ -6,29 +6,37 @@
         <%= form.label :name %>
         <%= form.text_field :name %>
     </div>
+
     <div>
         <%= form.label :species %>
         <%= form.text_field :species %>
     </div>
+
     <div>
         <%= form.label :price%>
         <%= form.number_field :price, min: 0 %>
     </div>
-    <div>
-        <%= form.label :light %>
-        <%= form.text_field :light %>
+
     </div>
-    <div>
-        <%= form.label :size %>
-        <%= form.text_field :size %>
+        <div>
+            <%= form.label :light %>
+            <%= form.select(:light, [["Low", 0], ["Moderate", 1], ["Bright", 2]]) %>
+        </div>
+        <div>
+            <%= form.label :size %>
+            <%= form.select(:size, [["Small", 0], ["Medium", 1], ["Large", 2]]) %>
+        </div>
     </div>
+
     <div>
         <%= form.label :description %>
         <%= form.text_area :description %>
     </div>
+
     <div>
         <%= form.label :image %>
         <%= form.file_field :image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
     </div>
+
     <%= form.submit %>
 <% end %>
