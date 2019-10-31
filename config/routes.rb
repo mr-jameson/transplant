@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   delete "/plants/:id", to: "plants#destroy"
   get "/payment/success", to: "payments#success", as: "success_payment"
   post "/payment/webhook", to: "payments#webhook", as: "webhook_payment"
+  get "/users/log_out", to: "pages#destroy", as: "log_out"
 end

@@ -27,6 +27,15 @@ class PlantsController < ApplicationController
     def show
     end
 
+    def update
+        if @plant.update(plant_params)
+            redirect_to plant_path(params[:id])
+        else
+            @address = Address.all
+            render "edit"
+        end
+    end
+
     def edit
     end
 
