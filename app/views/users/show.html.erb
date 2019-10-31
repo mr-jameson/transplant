@@ -1,12 +1,11 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
-<p><%= @id %></p>
-<p><%= current_user.id %></p>
-<h1>My Profile</h1>
-<p>edit</p>
-
+<% if @id == current_user.id %>
+<h1><%= My Profile %></h1>
+<p><%= edit %></p>
+<% end %>
 
 <p>Profile picture</p>
 <h2><%= @user.name %></h2>
-<p>Email: <%= user.email %></p>
-<p>Location: <%=current_user.address.suburb %><p>
+<p>Email: <%= @user.email %></p>
+<p>Location: <%=@user.address.suburb %><p>
