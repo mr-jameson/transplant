@@ -25,6 +25,27 @@ class PlantsController < ApplicationController
     end
 
     def show
+        session = Stripe::Checkout::Session.create(
+            payment_method_types: ['card'],
+            customer_email: current_user.email,
+            line_items: [{
+                name: @plant.name,
+                description: @plant.description,
+                amount: @plant.price * 100,
+                currency: 'aud',
+                quantity: 1,
+            }],
+            payment_intent_data: {
+                metadata: {
+                    user_id: current_user.id,
+                    listing_id: @plant.id
+                }
+            },
+            success_url: "#{root_url}payments/success?userId=#{current_user.id}&plantId=#{@plant.id}",
+            cancel_url: "#{root_url}plants"
+        )
+    
+        @session_id = session.id
     end
 
     def update

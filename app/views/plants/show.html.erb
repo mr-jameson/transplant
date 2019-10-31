@@ -6,6 +6,11 @@
 
 <%= image_tag @plant.image if @plant.image.attached? %>
 <h2><%= @plant.name %></h2>
+
+<button data-stripe="payment">
+  Pay Deposit <%= number_to_currency(@plant.deposit) %>
+</button>
+
 <p><%= @plant.price %></p>
 <p><%= @plant.description %></p>
 <p><%= @plant.address.suburb if @plant.address %></p>
@@ -15,3 +20,19 @@
 <p><%= @plant.postage %></p>
 <p><%= link_to current_user.name, user_path(current_user.id) %></p>
 <%= link_to "edit", edit_plant_path(@plant.id) %>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document
+    .querySelector("[data-stripe='payment']")
+    .addEventListener("click", () => {
+      const stripe = Stripe(
+        "<%= Rails.application.credentials.dig(:stripe, :public_key) %>"
+      );
+
+      stripe.redirectToCheckout({
+        sessionId: "<%= @session_id %>"
+      });
+    });
+</script>
