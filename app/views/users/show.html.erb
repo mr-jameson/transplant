@@ -9,3 +9,9 @@
 <h2><%= @user.name %></h2>
 <p>Email: <%= @user.email %></p>
 <p>Location: <%=@user.address.suburb %><p>
+<p>About Me: <%=@user.description %><p>
+
+<% if @id == current_user.id %>
+<h2>My Listings</h2>
+<p><%= link_to "Create New Listing", new_plant_path %><p>
+<% end %>
