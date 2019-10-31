@@ -1,1 +1,3 @@
-<h1>Plant:id</h1>
+<h1><%=@plant.name%></h1>
+
+<%= link_to "edit", edit_plant_path(@plant) if current_user.id == @plant.user_id %>
