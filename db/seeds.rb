@@ -56,7 +56,7 @@ suburbs = ["Sydney", "Pyrmont", "Greenwich", "Rose Bay", "Newtown", "Alexandria"
 
 for i in 1..20
     Address.create(
-        user_id: user_ids.sample,
+        user_id: user_ids[i-1],
         address: Faker::Address.street_address,
         suburb: suburbs.sample,
         state: "NSW",

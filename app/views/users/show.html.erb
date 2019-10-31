@@ -1,3 +1,12 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
-<%= @user.name %>
+<p><%= @id %></p>
+<p><%= current_user.id %></p>
+<h1>My Profile</h1>
+<p>edit</p>
+
+
+<p>Profile picture</p>
+<h2><%= @user.name %></h2>
+<p>Email: <%= user.email %></p>
+<p>Location: <%=current_user.address.suburb %><p>
