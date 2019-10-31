@@ -1,3 +1,13 @@
 <h1><%=@plant.name%></h1>
 
 <%= link_to "edit", edit_plant_path(@plant) if current_user.id == @plant.user_id %>
+
+<%= image_tag plant.image if plant.image.attached? %>
+<h2><%= plant.name %></h2>
+<p><%= plant.price %></p>
+<p><%= plant.description %></p>
+<p><%= plant.address.suburb if plant.address %></p>
+<p><%= plant.light %></p>
+<p><%= plant.size %></p>
+<p><%= plant.pot %></p>
+<p><%= plant.postage %></p>
