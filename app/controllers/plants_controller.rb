@@ -53,7 +53,7 @@ class PlantsController < ApplicationController
     end
 
     def set_user_plant
-        @milkshake = current_user.plants.find_by_id(params[:id])
+        @plant = current_user.plants.find_by_id(params[:id])
 
         if @plant == nil
             redirect_to plants_path
