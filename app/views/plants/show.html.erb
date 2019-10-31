@@ -13,4 +13,5 @@
 <p><%= @plant.size %></p>
 <p><%= @plant.pot %></p>
 <p><%= @plant.postage %></p>
+<p><%= link_to current_user.name, user_path(current_user.id) %></p>
 <%= link_to "edit", edit_plant_path(@plant.id) %>

@@ -2,10 +2,10 @@
            <li><%= link_to "Home", root_path %></li>
            <li><%= link_to "Shop", plants_path %></li>
            <li><%= link_to "Sell", new_plant_path %></li>
-           <li><% if current_user == nil %>
-               <%= link_to "Sign In",  "/users/sign_in" %>
+           <% if current_user == nil %>
+           <li><%= link_to "Sign In",  new_user_registration_path %></li> 
                <% else %>
-               <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            <li><%= link_to "Profile", user_path(current_user.id) %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
                <% end %>
-           </li> 
         </ul>
