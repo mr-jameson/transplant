@@ -15,7 +15,7 @@ class PlantsController < ApplicationController
     end
 
     def create
-        plant_params[:price] = plant_params[:price] * 100
+        params[:price] = params[:price].to_i * 100
         @plant = current_user.plants.create(plant_params)
         
         if @plant.errors.any?
