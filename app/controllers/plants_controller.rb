@@ -15,13 +15,14 @@ class PlantsController < ApplicationController
     end
 
     def create
-        params[:price] = params[:price].to_i * 100
-        @plant = current_user.plants.create(plant_params)
+        @plant = Plant.new(plant_params)
+        @plant.price = @plant.price * 100
+        @plant.user_id = current_user.id
         
-        if @plant.errors.any?
-            render "new"
-        else 
+        if @plant.save
             redirect_to plant_path(@plant)
+        else 
+            render "new"
         end
     end
 
