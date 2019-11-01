@@ -9,9 +9,10 @@
 # Create random users
 user_ids = []
 for i in 1..20
+    name = Faker::Name.name
     user = User.create(
-        name: Faker::Name.name,
-        email: Faker::Internet.free_email,
+        name: name,
+        email: Faker::Internet.free_email(name: name),
         password: "Testing123",
         mobile: "0#{rand(408000000..499999999)}",
         description: Faker::Quote.matz,
