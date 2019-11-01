@@ -4,7 +4,7 @@
 
 <% for plant in @plants %>
 <div class="card">
-        <%= image_tag plant.image if plant.image.attached? %>
+        <div class="images"><%= image_tag plant.image if plant.image.attached? %></div>
         <h2><%= link_to plant.name, plant_path(plant) %></h2>
         <p>Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></p>
         <p>Price: <%= number_to_currency((plant.price)/100) %></p>

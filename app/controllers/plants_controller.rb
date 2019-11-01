@@ -15,6 +15,7 @@ class PlantsController < ApplicationController
     end
 
     def create
+        plant_params[:price] = plant_params[:price] * 100
         @plant = current_user.plants.create(plant_params)
         
         if @plant.errors.any?
@@ -31,7 +32,7 @@ class PlantsController < ApplicationController
             line_items: [{
                 name: @plant.name,
                 description: @plant.description,
-                amount: @plant.price * 100,
+                amount: @plant.price,
                 currency: 'aud',
                 quantity: 1,
             }],
