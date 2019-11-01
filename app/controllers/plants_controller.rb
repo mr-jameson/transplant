@@ -38,7 +38,7 @@ class PlantsController < ApplicationController
             payment_intent_data: {
                 metadata: {
                     user_id: current_user.id,
-                    listing_id: @plant.id
+                    plant_id: @plant.id
                 }
             },
             success_url: "#{root_url}payments/success?userId=#{current_user.id}&plantId=#{@plant.id}",

@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+    skip_before_action :verify_authenticity_token, only: [:webhook]
+
     def success
     end
 
@@ -8,8 +10,7 @@ class PaymentsController < ApplicationController
         plant_id = payment.metadata.plant_id
         user_id = payment.metadata.user_id
     
-        p "plant id " + plant_id
-        p "user id " + user_id
+        Ledger.create(plant_id: plant_id, user_id: user_id, stripe_id: payment.id )
     
         status 200
     end

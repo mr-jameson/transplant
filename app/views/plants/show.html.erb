@@ -2,22 +2,20 @@
 
 <h1><%=@plant.name%></h1>
 
+<%= current_user.id %>
+<%= @plant.user_id %>
 <%= link_to "edit", edit_plant_path(@plant) if current_user.id == @plant.user_id %>
 
 <%= image_tag @plant.image if @plant.image.attached? %>
-<h2><%= @plant.name %></h2>
 
-<button data-stripe="payment">Pay <%= number_to_currency(@plant.price) %></button>
-
-<p><%= @plant.price %></p>
-<p><%= @plant.description %></p>
-<p><%= @plant.address.suburb if @plant.address %></p>
-<p><%= @plant.light %></p>
-<p><%= @plant.size %></p>
-<p><%= @plant.pot %></p>
-<p><%= @plant.postage %></p>
-<p><%= link_to current_user.name, user_path(current_user.id) %></p>
-<%= link_to "edit", edit_plant_path(@plant.id) %>
+<button data-stripe="payment">Buy <%= number_to_currency((@plant.price)/100) %></button>
+<p>Seller:<%= link_to @plant.user.name, user_path(@plant.user.id) %></p>
+<p>Description:<%= @plant.description %></p>
+<p>Location:<%= @plant.address.suburb if @plant.address %></p>
+<p>Light Requirements:<%= @plant.light %></p>
+<p>Size:<%= @plant.size %></p>
+<p>Pot:<%= @plant.pot %></p>
+<p>Delivery Method:<%= @plant.postage %></p>
 
 <script src="https://js.stripe.com/v3/"></script>
 

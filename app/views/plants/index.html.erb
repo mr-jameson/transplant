@@ -6,14 +6,14 @@
 <div class="card">
         <%= image_tag plant.image if plant.image.attached? %>
         <h2><%= link_to plant.name, plant_path(plant) %></h2>
-        <p><%= plant.price %></p>
-        <p><%= plant.description %></p>
-        <p><%= plant.address.suburb if plant.address %></p>
-        <p><%= plant.light %></p>
-        <p><%= plant.size %></p>
-        <p><%= plant.pot %></p>
-        <p><%= plant.postage %></p>
-        <p><%= link_to plant.user.name, user_path(plant.user.id) %></p>
+        <p>Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></p>
+        <p>Price: <%= number_to_currency((plant.price)/100) %></p>
+        <p>Description: <%= plant.description %></p>
+        <p>Location: <%= plant.address.suburb if plant.address %></p>
+        <p>Light Requirements: <%= plant.light %></p>
+        <p>Size: <%= plant.size %></p>
+        <p>Pot: <%= plant.pot %></p>
+        <p>Delivery Method: <%= plant.postage %></p>
         <% if plant.user == current_user %>
             <%= link_to "edit", edit_plant_path(plant.id) %>
         <% end %>
