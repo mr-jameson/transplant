@@ -1,9 +1,7 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
-<% if @id.to_i == current_user.id %>
-<p>My Profile</p>
-<p>edit</p>
-<% end %>
+<h1><%= My Profile %></h1>
+<p><%= edit %></p>
 
 <%= image_tag "profile-avatar.jpg", alt: "Generic avatar profile image" %>
 
@@ -12,8 +10,6 @@
 <p>Location: <%=@user.address.suburb %><p>
 <p>About Me: <%=@user.description %><p>
 
-<% if @id.to_i == current_user.id %>
 <h2>Listings</h2>
 <p><%= link_to "Create New Listing", new_plant_path %><p>
-
 <% end %>

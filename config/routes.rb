@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   get "/payments/success", to: "payments#success", as: "success_payment"
   post "/payments/webhook", to: "payments#webhook", as: "webhook_payment"
   get "/users/log_out", to: "pages#destroy", as: "log_out"
+  get "/users/:id/profile", to: "users#profile", as: "profile" 
 end
