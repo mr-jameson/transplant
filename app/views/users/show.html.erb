@@ -2,7 +2,7 @@
 
 <% if @id.to_i == current_user.id %>
 <p>My Profile</p>
-<p>edit</p>
+<%= link_to "edit", edit_user_path(@user) %>
 <% end %>
 
 <%= image_tag "profile-avatar.jpg", alt: "Generic avatar profile image" %>
