@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   patch "/plants/:id", to: "plants#update"
   get "/plants/:id/edit", to: "plants#edit", as: "edit_plant"
   delete "/plants/:id", to: "plants#destroy"
+  get "/users/log_out", to: "pages#destroy", as: "log_out"
   get "/users/:id", to: "users#show", as: "user"
   patch "/users/:id", to: "users#update"
   get "/users/:id/edit", to: "users#edit", as: "edit_user"
   get "/payments/success", to: "payments#success", as: "success_payment"
   post "/payments/webhook", to: "payments#webhook", as: "webhook_payment"
-  get "/users/log_out", to: "pages#destroy", as: "log_out"
   # get "/users/:id/profile", to: "users#profile", as: "profile" 
 end
