@@ -11,8 +11,8 @@
         <p>Description: <%= plant.description %></p>
         <p>Location: <%= plant.address.suburb if plant.address %></p>
         <p>Light Requirements: <%= plant.light %></p>
-        <p>Size: <%= plant.size %></p>
-        <p>Pot: <%= plant.pot %></p>
+        <p>Size: <%= plant.size.capitalize %></p>
+        <p>Pot: <%= plant.pot.capitalize %></p>
         <p>Delivery Method: <%= plant.postage %></p>
         <% if plant.user == current_user %>
             <%= link_to "edit", edit_plant_path(plant.id) %>
