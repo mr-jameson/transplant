@@ -5,17 +5,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    super do |resource|
-      resource.build_address
-    end
-  end
+  # def new
+  #   super do |resource|
+  #     resource.build_address
+  #   end
+  # end
 
   # POST /resource
-  # def create
-  #   super
-  #   @user.address = Address.create(params[:address])
-  # end
+  def create
+    super
+    @user.address = Address.create(params[:address])
+  end
 
   # GET /resource/edit
   # def edit
