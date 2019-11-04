@@ -5,7 +5,10 @@
 <%= link_to "edit", edit_user_path(@user) %>
 <% end %>
 
-<%= image_tag "profile-avatar.jpg", alt: "Generic avatar profile image" %>
+<% if @user.profile_pic.attached? %>
+    <%= image_tag @user.profile_pic, alt: "Generic avatar profile image" %>
+<% end %>
+
 
 <h2><%= @user.name %></h2>
 <p>Email: <%= @user.email %></p>

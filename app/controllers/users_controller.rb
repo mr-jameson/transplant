@@ -12,7 +12,8 @@ class UsersController < ApplicationController
         current_user.update(
             name: params[:user][:name],
             mobile: params[:user][:mobile],
-            description: params[:user][:description]
+            description: params[:user][:description],
+            profile_pic: params[:user][:profile_pic]
         )
 
         if current_user.address.nil?
