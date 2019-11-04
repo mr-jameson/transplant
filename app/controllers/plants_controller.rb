@@ -5,8 +5,9 @@ class PlantsController < ApplicationController
     # investgate set_user_plant?
 
     def index
-        @plants = Plant.all
         @address = Address.all
+        plants_available = Plant.all.ids - Ledger.pluck(:plant_id)
+        @plants = Plant.where(id: plants_available)
     end
 
     def new
