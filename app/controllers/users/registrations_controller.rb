@@ -12,10 +12,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    @user.address = Address.create(params[:address])
-  end
+  # def create
+  #   super
+  #   @user.address = Address.create(params[:address])
+  # end
 
   # GET /resource/edit
   # def edit

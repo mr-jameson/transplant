@@ -1,15 +1,50 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
-<h1><%= My Profile %></h1>
-<p><%= edit %></p>
+<h1>Edit Profile</h1>
+<%= form_with model: @user, method: "patch", local: true do |f| %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :mobile %><br />
+      <%= f.text_field :mobile %>
+    </div>
 
-<div><%= image_tag "profile-avatar.jpg", alt: "Generic avatar profile image" %></div>
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description %>
+    </div>
+  <%= fields_for :address, @user.address do |address_f| %>
+    <div class="field">
+      <%= address_f.label :address %><br />
+      <%= address_f.text_field :address %>
+    </div>
 
-<h2><%= @user.name %></h2>
-<p>Email: <%= @user.email %></p>
-<p>Location: <%=@user.address.suburb %><p>
-<p>About Me: <%=@user.description %><p>
+    <div class="field">
+      <%= address_f.label :suburb %><br />
+      <%= address_f.text_field :suburb %>
+    </div>
+
+    <div class="field">
+      <%= address_f.label :state %><br />
+      <%= address_f.text_field :state %>
+    </div>
+
+    <div class="field">
+      <%= address_f.label :postcode %><br />
+      <%= address_f.text_field :postcode %>
+    </div>
+  <% end %>
+    <div>
+        <%= f.label :profile_pic %><br />
+        <%= f.file_field :profile_pic, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
 
 <h2>Listings</h2>
 <p><%= link_to "Create New Listing", new_plant_path %><p>
-<% end %>
