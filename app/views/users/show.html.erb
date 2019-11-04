@@ -12,9 +12,12 @@
 
 <h2><%= @user.name %></h2>
 <p>Email: <%= @user.email %></p>
+<% if @user.address != nil %>
 <p>Location: <%=@user.address.suburb %><p>
+<% end %>
+<% if @user.description != nil %>
 <p>About Me: <%=@user.description %><p>
-
+<% end %>
 <% if @id.to_i == current_user.id %>
 <h2>Listings</h2>
 <p><%= link_to "Create New Listing", new_plant_path %><p>

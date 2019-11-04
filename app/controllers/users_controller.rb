@@ -17,7 +17,7 @@ class UsersController < ApplicationController
         )
 
         if current_user.address.nil?
-            current.user.create_address(
+            current_user.create_address(
                 address: params[:address][:address],
                 suburb: params[:address][:suburb],
                 state: params[:address][:state],
