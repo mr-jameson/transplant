@@ -58,6 +58,9 @@ class PlantsController < ApplicationController
             @address = Address.all
             render "edit"
         end
+        @plant = Plant.new(plant_params)
+        @plant.price = @plant.price * 100
+        @plant.user_id = current_user.id
     end
 
     def edit

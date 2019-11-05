@@ -1,25 +1,44 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
 <% if @id.to_i == current_user.id %>
-<p>My Profile</p>
-<%= link_to "edit", edit_user_path(@user) %>
+    <p>My Profile</p>
+    <%= link_to "edit", edit_user_path(@user) %>
+
+    <% if @user.profile_pic.attached? %>
+        <%= image_tag @user.profile_pic, alt: "Generic avatar profile image" %>
+    <% end %>
+
+    <h2><%= @user.name %></h2>
+        <p>Email: <%= @user.email %></p>
+    <% if @user.mobile != nil %>
+        <p>Mobile: <%= @user.mobile %></p>
+    <% end %>
+    <% if @user.address != nil %>
+        <p>Address: <%=@user.address.address %><p>
+        <p>Suburb: <%=@user.address.suburb %><p>
+        <p>Postcode: <%=@user.address.postcode %><p>
+        <p>State: <%=@user.address.suburb %><p>
+    <% end %>
+    <% if @user.description != nil %>
+        <p>About Me: <%=@user.description %><p>
+    <% end %>
+
+    <h2>Listings</h2>
+    <p><%= link_to "Create New Listing", new_plant_path %><p>
+    <%= render "user_plants", user_plants: @user_plants, address: @address %>
+
+<% else %>
+    <h2><%= @user.name %></h2>
+    <p>Email: <%= @user.email %></p>
+    <% if @user.address != nil %>
+    <p>Location: <%=@user.address.suburb %><p>
+    <% end %>
+    <% if @user.description != nil %>
+    <p>About Me: <%=@user.description %><p>
+    <% end %>
+
+    <h2>Listings</h2>
+    <%= p @user_plants %>
 <% end %>
 
-<% if @user.profile_pic.attached? %>
-    <%= image_tag @user.profile_pic, alt: "Generic avatar profile image" %>
-<% end %>
 
-
-<h2><%= @user.name %></h2>
-<p>Email: <%= @user.email %></p>
-<% if @user.address != nil %>
-<p>Location: <%=@user.address.suburb %><p>
-<% end %>
-<% if @user.description != nil %>
-<p>About Me: <%=@user.description %><p>
-<% end %>
-<% if @id.to_i == current_user.id %>
-<h2>Listings</h2>
-<p><%= link_to "Create New Listing", new_plant_path %><p>
-
-<% end %>

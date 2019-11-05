@@ -36,6 +36,7 @@
       <%= address_f.text_field :postcode %>
     </div>
   <% end %>
+
     <div>
         <%= f.label :profile_pic %><br />
         <%= f.file_field :profile_pic, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
@@ -46,5 +47,3 @@
     </div>
   <% end %>
 
-<h2>Listings</h2>
-<p><%= link_to "Create New Listing", new_plant_path %><p>
