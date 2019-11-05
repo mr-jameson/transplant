@@ -3,7 +3,7 @@
         <div class="images"><%= image_tag plant.image if plant.image.attached? %></div>
         <h2><%= link_to plant.name, plant_path(plant) %></h2>
         <p>Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></p>
-        <p>Price: <%= number_to_currency(plant.price) %></p>
+        <p>Price: <%= number_to_currency(plant.price/100) %></p>
         <p>Description: <%= plant.description %></p>
         <p>Location: <%= plant.address.suburb if plant.address %></p>
         <p>Light Requirements: <%= plant.light %></p>
