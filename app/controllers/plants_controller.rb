@@ -52,15 +52,13 @@ class PlantsController < ApplicationController
     end
 
     def update
+        params[:plant][:price] = params[:plant][:price].to_i * 100
         if @plant.update(plant_params)
             redirect_to plant_path(params[:id])
         else
             @address = Address.all
             render "edit"
         end
-        @plant = Plant.new(plant_params)
-        @plant.price = @plant.price * 100
-        @plant.user_id = current_user.id
     end
 
     def edit
