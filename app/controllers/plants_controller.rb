@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:edit, :new, :update, :destroy]
     before_action :set_plant, only: [:show, :edit, :update, :destroy]
     before_action :set_user_plant, only: [:edit, :update]
     # investgate set_user_plant?

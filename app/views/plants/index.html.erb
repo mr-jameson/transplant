@@ -1,22 +1,17 @@
-    <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
+<%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
-    <h1>Plant Listings</h1>
+<h1>Plant Listings</h1>
 
     <% for plant in @plants %>
-    <div class="card">
-            <div class="images"><%= image_tag plant.image if plant.image.attached? %></div>
-            <h2><%= link_to plant.name, plant_path(plant) %></h2>
-            <p>Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></p>
-            <p>Price: <%= number_to_currency((plant.price)/100) %></p>
-            <p>Description: <%= plant.description %></p>
-            <p>Location: <%= plant.address.suburb if plant.address %></p>
-            <p>Light Requirements: <%= plant.light %></p>
-            <p>Size: <%= plant.size.capitalize %></p>
-            <p>Pot: <%= plant.pot.capitalize %></p>
-            <p>Delivery Method: <%= plant.postage %></p>
-            <% if plant.user == current_user %>
-                <%= link_to "edit", edit_plant_path(plant.id) %>
-            <% end %>
+    <div class="card tex-center border-success" style="width: 40vw;">
+            <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top", alt: "image of plant") %>
+            <div class="card-body">
+                <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency((plant.price)/100) %>
+                </h6>
+                <p class="card-text">Location: <%= plant.address.suburb if plant.address %></p>
+            </div>
     </div>
     <% end %>
 <%= render "/pages/footer" %>
