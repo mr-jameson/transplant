@@ -1,6 +1,5 @@
+<div class="containter text-center navbar_body">
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
-
-<div class="containter text-center">
   <h2>Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
