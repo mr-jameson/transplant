@@ -8,7 +8,7 @@
     <%= bootstrap_form_with model: plant, local: true do |form| %>
         <%= form.text_field :name %>
         <%= form.text_field :species %>
-        <%= form.number_field :price, min: 0 %>
+        <%= form.number_field :price, help: "Please enter price in AUD", min: 0 %>
         <%= form.select(:light, [["Low", "low"], ["Moderate", "moderate"], ["Bright", "bright"]]) %>
         <%= form.select(:size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]]) %>
         <%= form.text_field :pot %>
