@@ -5,52 +5,17 @@
 <% end %>
 
 <!-- REMOVE INSTANCE VARIABLE IF ADDING PARTIALS -->
-    <%= form_with model: plant, local: true do |form| %>
-    <div>
-        <%= form.label :name %>
+    <%= bootstrap_form_with model: plant, local: true do |form| %>
         <%= form.text_field :name %>
-    </div>
-
-    <div>
-        <%= form.label :species %>
         <%= form.text_field :species %>
-    </div>
-
-    <div>
-        <%= form.label :price, "Price $AUD" %>
         <%= form.number_field :price, min: 0 %>
-    </div>
-
-    </div>
-        <div>
-            <%= form.label :light %>
-            <%= form.select(:light, [["Low", "low"], ["Moderate", "moderate"], ["Bright", "bright"]]) %>
-        </div>
-        <div>
-            <%= form.label :size %>
-            <%= form.select(:size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]]) %>
-        </div>
-    </div>
-
-    <div>
-        <%= form.label :pot, "Pot Type" %>
+        <%= form.select(:light, [["Low", "low"], ["Moderate", "moderate"], ["Bright", "bright"]]) %>
+        <%= form.select(:size, [["Small", "small"], ["Medium", "medium"], ["Large", "large"]]) %>
         <%= form.text_field :pot %>
-    </div>
-
-    <div>
-        <%= form.label :description %>
         <%= form.text_area :description %>
-    </div>
-
-    <div>
-        <%= form.label :postage, "Delivery Method" %>
         <%= form.text_field :postage %>
-    </div>
 
-    <div>
-        <%= form.label :image %>
         <%= form.file_field :image, accept: "image/png,image/gif,image/jpeg,image/jpg" %>
-    </div>
 
     <%= form.submit %>
 <% end %>
