@@ -10,8 +10,9 @@
   </head>
 
   <body>
+  <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
+  <%= render "/layouts/flash_messages" %>
     <%= yield %>
-    <%= render "/layouts/flash_messages" %>
   <%= render "/pages/footer" %> 
   </body>
 </html>

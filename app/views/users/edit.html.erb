@@ -1,5 +1,3 @@
-<%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
-
 <h1>Edit Profile</h1>
 <%= form_with model: @user, method: "patch", local: true do |f| %>
     <div class="field">
@@ -46,5 +44,3 @@
       <%= f.submit "Update" %>
     </div>
   <% end %>
-
-<%= render "/pages/footer" %>
