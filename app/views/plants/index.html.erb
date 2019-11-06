@@ -2,7 +2,7 @@
 <div class="card-columns"> 
     <% for plant in @plants %>
         <div class="card tex-center border-success">
-                <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top", alt: "image of plant") %>
+                <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top stretched-link", alt: "image of plant") %>
                 <div class="card-body">
                     <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>
                     </h5>

@@ -1,5 +1,4 @@
 <div class = "navbar_body">
-    <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
     <% if @id.to_i == current_user.id %>
         <p>My Profile</p>
         <%= link_to "edit", edit_user_path(@user) %>
