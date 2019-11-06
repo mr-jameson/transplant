@@ -1,17 +1,18 @@
 <%= render "/pages/navbar", plant: @plant, user: @user, address: @address %>
 
 <h1>Plant Listings</h1>
-
+<div class="card-columns"> 
     <% for plant in @plants %>
-    <div class="card tex-center border-success" style="width: 40vw;">
-            <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top", alt: "image of plant") %>
-            <div class="card-body">
-                <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency((plant.price)/100) %>
-                </h6>
-                <p class="card-text">Location: <%= plant.address.suburb if plant.address %></p>
-            </div>
-    </div>
+        <div class="card tex-center border-success">
+                <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top", alt: "image of plant") %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Price: <%= number_to_currency((plant.price)/100) %>
+                    </h6>
+                    <p class="card-text">Location: <%= plant.address.suburb if plant.address %></p>
+                </div>
+        </div>
     <% end %>
+</div>
 <%= render "/pages/footer" %>

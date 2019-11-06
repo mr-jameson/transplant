@@ -1,8 +1,8 @@
 class PlantsController < ApplicationController
-    before_action :authenticate_user!, only: [:edit, :new, :update, :destroy]
+    before_action :translate_params, only: [:create, :update]
+    before_action :authenticate_user!, only: [:show, :edit, :new, :update, :destroy]
     before_action :set_plant, only: [:show, :edit, :update, :destroy]
     before_action :set_user_plant, only: [:edit, :update]
-    # investgate set_user_plant?
 
     def index
         @address = Address.all
@@ -16,8 +16,6 @@ class PlantsController < ApplicationController
     end
 
     def create
-        @plant = Plant.new(plant_params)
-        @plant.price = @plant.price * 100
         @plant.user_id = current_user.id
         
         if @plant.save
@@ -52,7 +50,6 @@ class PlantsController < ApplicationController
     end
 
     def update
-        params[:plant][:price] = params[:plant][:price].to_i * 100
         if @plant.update(plant_params)
             redirect_to plant_path(params[:id])
         else
@@ -83,6 +80,10 @@ class PlantsController < ApplicationController
         if @plant == nil
             redirect_to plants_path
         end
+    end
+
+    def translate_params
+        params[:plant][:price] = (params[:plant][:price].to_f * 100).to_i
     end
 
 end
