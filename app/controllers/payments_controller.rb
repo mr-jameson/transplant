@@ -12,17 +12,8 @@ class PaymentsController < ApplicationController
         plant_id = payment.metadata.plant_id
         user_id = payment.metadata.user_id
 
-        status 200
-
         Ledger.create(plant_id: plant_id, user_id: user_id, stripe_id: payment.id )
-        
-        unless ledger
-            puts "**********************************************************"
-            puts params
-            puts "*********************************************************"
-        else
-            puts "Order #{ledger.id} successfully created"
-        end
+        status 200
 
     end
 end

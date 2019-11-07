@@ -1,9 +1,11 @@
 <div class = "user_profile">
     <div class="container-fluid"> 
         <% if @id.to_i == current_user.id %>
-            <div class="card tex-center border-success">
+            <div class="card border-success profile">
                 <% if @user.profile_pic.attached? %>
                     <%= image_tag @user.profile_pic, class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
+                <% else %>
+                    <%= image_tag "profile-avatar", class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
                 <% end %>
                     <div class="card-body">
                         <h5 class="card-title"><%= @user.name %></h5>
@@ -23,12 +25,12 @@
                         </ul>
                     </div>
             </div>
-            <h4>Listings</h4>
-            <h6 class = "create_listing"><%= link_to "Create New Listing", new_plant_path %><h6>
+            <h5 class="title">Listings</h5>
+            <h6 class = "create_listing"><%= link_to "Create New Listing", new_plant_path %></h6>
             <%= render "user_plants", user_plants: @user_plants, address: @address %>
 
         <% else %>
-            <div class="card tex-center border-success">
+            <div class="card border-success profile">
             <% if @user.profile_pic.attached? %>
                 <%= image_tag @user.profile_pic, class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
             <% end %>
@@ -46,7 +48,7 @@
                              <% end %>
                       </ul>
                 </div>
-        <h4>Listings</h4>
+        <h5 class="title">Listings</h5>
         <%= render "user_plants", user_plants: @user_plants, address: @address %>
         <% end %>        
     </div>

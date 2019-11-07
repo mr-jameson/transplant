@@ -1,7 +1,6 @@
 
-
 <div class="container-fluid"> 
-        <div class="card tex-center border-success">
+        <div class="card border-success">
                 <%= image_tag((@plant.image if @plant.image.attached?), class: "card-img-top stretched-link image", alt: "image of plant") %>
                 <div class="card-body">
                     <button data-stripe="payment" class="btn btn-primary buy">Buy <%= number_to_currency((@plant.price)/100) %></button>
