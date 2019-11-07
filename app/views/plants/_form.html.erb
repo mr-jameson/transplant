@@ -5,6 +5,7 @@
 <% end %>
 
 <!-- REMOVE INSTANCE VARIABLE IF ADDING PARTIALS -->
+<div class="create_form">
     <%= bootstrap_form_with model: plant, local: true do |form| %>
         <%= form.text_field :name %>
         <%= form.text_field :species %>
@@ -19,3 +20,4 @@
 
     <%= form.submit %>
 <% end %>
+</div>

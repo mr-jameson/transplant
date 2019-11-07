@@ -1,3 +1,50 @@
+.background-container {
+    // background-image: url(/assets/images/forest-1.jpg) no-repeat center center fixed;
+    background-image: url(/assets/background-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 72px;
+    .home-container{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
+        .home-heading, {
+            text-align: center;
+            margin: 50px 50px 5px 50px;
+            padding: 20px;
+            background-color:rgba(48, 80, 48, 0.5)
+        }
+        .home-subheading{
+            text-align: center;
+            margin: 5px 50px;
+            padding: 20px;
+            background-color:rgba(48, 80, 48, 0.5)
+        }
+
+        .tiles{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center;
+            margin: 5px 50px;
+            background-color: rgba(48, 80, 48, 0.5);
+            .home-card{
+                background-color: rgba(255, 0, 0, 0.3);
+                padding: 20px;
+                margin: 5px;
+                text-align: center; 
+                text-decoration: none;
+            }
+        }
+    }
+}
+
 body {
     min-height: 100vh;
     position: relative;
@@ -49,7 +96,6 @@ form {
 
 .container-fluid {
     padding: 15px;
-
     .profile {
         margin: 10px;
     }
@@ -62,13 +108,19 @@ form {
     margin: 0px 10px;
 }
 
+.create_form {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .home {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
 }
 
-.success {
+.title {
     h4 {
     text-align: center;
     margin: 15px;
@@ -79,8 +131,8 @@ form {
         }
 }
 
-@media only screen and (min-width: 600px) {
-    .home {
-        flex-direction: row;
-    }
+.user_profile {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -62,6 +62,8 @@ class PlantsController < ApplicationController
     end
 
     def destroy
+        set_plant.destroy
+        redirect_to plants_path
     end
 
     private
