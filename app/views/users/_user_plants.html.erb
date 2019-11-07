@@ -1,17 +1,27 @@
+
+
+<div class="card-columns"> 
 <% for plant in user_plants %>
-    <div class="card">
-        <div class="images"><%= image_tag plant.image if plant.image.attached? %></div>
-        <h2><%= link_to plant.name, plant_path(plant) %></h2>
-        <p>Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></p>
-        <p>Price: <%= number_to_currency(plant.price/100) %></p>
-        <p>Description: <%= plant.description %></p>
-        <p>Location: <%= plant.address.suburb if plant.address %></p>
-        <p>Light Requirements: <%= plant.light %></p>
-        <p>Size: <%= plant.size.capitalize %></p>
-        <p>Pot: <%= plant.pot.capitalize %></p>
-        <p>Delivery Method: <%= plant.postage %></p>
-        <% if plant.user == current_user %>
-            <%= link_to "edit", edit_plant_path(plant.id) %>
-        <% end %>
-    </div>
-<% end %>
+        <div class="card tex-center border-success">
+                <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top stretched-link image", alt: "image of plant") %>
+                <div class="card-body">
+                    <h6>
+                        <% if plant.user == current_user %>
+                        <%= link_to "edit", edit_plant_path(plant.id) %>
+                        <% end %>
+                    </h6>
+                    <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>
+                    </h5>
+                    <p class="card-text"><%= plant.description %></p>
+                      <ul class="list-group list-group-flush">
+                         <li class="list-group-item">Seller: <%= link_to plant.user.name, user_path(plant.user.id) %></li> 
+                         <li class="list-group-item">Location: <%= plant.address.suburb if plant.address %></li>
+                         <li class="list-group-item">Light Requirements: <%= plant.light.capitalize %></li>
+                          <li class="list-group-item">Size: <%= plant.size.capitalize %></li>
+                          <li class="list-group-item">Pot: <%= plant.pot %></li>
+                          <li class="list-group-item">Delivery Method: <%= plant.postage %></li>
+                      </ul>
+                </div>
+        </div>
+    <% end %>
+</div>  

@@ -1,43 +1,55 @@
-<div class = "navbar_body">
-    <% if @id.to_i == current_user.id %>
-        <p>My Profile</p>
-        <%= link_to "edit", edit_user_path(@user) %>
+<div class = "user_profile">
+    <div class="container-fluid"> 
+        <% if @id.to_i == current_user.id %>
+            <div class="card tex-center border-success">
+                <% if @user.profile_pic.attached? %>
+                    <%= image_tag @user.profile_pic, class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
+                <% end %>
+                    <div class="card-body">
+                        <h5 class="card-title"><%= @user.name %></h5>
+                        <h6>
+                            <%= link_to "edit", edit_user_path(@user) %>
+                        </h6>
+                        <p class="card-text"><%= @user.description %></p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Email: <%= @user.email %></li> 
+                            <li class="list-group-item">Mobile: <%= @user.mobile %></li>
+                                <% if @user.address != nil %>
+                                    <li class="list-group-item">Address: <%=@user.address.address %></li>
+                                    <li class="list-group-item">Suburb: <%=@user.address.suburb %></li>
+                                    <li class="list-group-item">Postcode: <%=@user.address.postcode %></li>
+                                    <li class="list-group-item">State: <%=@user.address.state %></li>
+                                <% end %>
+                        </ul>
+                    </div>
+            </div>
+            <h4>Listings</h4>
+            <h6 class = "create_listing"><%= link_to "Create New Listing", new_plant_path %><h6>
+            <%= render "user_plants", user_plants: @user_plants, address: @address %>
 
-        <% if @user.profile_pic.attached? %>
-            <%= image_tag @user.profile_pic, alt: "Generic avatar profile image" %>
-        <% end %>
-
-        <h2><%= @user.name %></h2>
-            <p>Email: <%= @user.email %></p>
-        <% if @user.mobile != nil %>
-            <p>Mobile: <%= @user.mobile %></p>
-        <% end %>
-        <% if @user.address != nil %>
-            <p>Address: <%=@user.address.address %><p>
-            <p>Suburb: <%=@user.address.suburb %><p>
-            <p>Postcode: <%=@user.address.postcode %><p>
-            <p>State: <%=@user.address.suburb %><p>
-        <% end %>
-        <% if @user.description != nil %>
-            <p>About Me: <%=@user.description %><p>
-        <% end %>
-
-        <h2>Listings</h2>
-        <p><%= link_to "Create New Listing", new_plant_path %><p>
+        <% else %>
+            <div class="card tex-center border-success">
+            <% if @user.profile_pic.attached? %>
+                <%= image_tag @user.profile_pic, class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
+            <% end %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= @user.name %></h5>
+                    <p class="card-text"><%= @user.description %></p>
+                      <ul class="list-group list-group-flush">
+                         <li class="list-group-item">Email: <%= @user.email %></li> 
+                         <li class="list-group-item">Mobile: <%= @user.mobile %></li>
+                            <% if @user.address != nil %>
+                                <li class="list-group-item">Address: <%=@user.address.address %></li>
+                                <li class="list-group-item">Suburb: <%=@user.address.suburb %></li>
+                                <li class="list-group-item">Postcode: <%=@user.address.postcode %></li>
+                                <li class="list-group-item">State: <%=@user.address.state %></li>
+                             <% end %>
+                      </ul>
+                </div>
+        <h4>Listings</h4>
         <%= render "user_plants", user_plants: @user_plants, address: @address %>
-
-    <% else %>
-        <h2><%= @user.name %></h2>
-        <p>Email: <%= @user.email %></p>
-        <% if @user.address != nil %>
-        <p>Location: <%=@user.address.suburb %><p>
-        <% end %>
-        <% if @user.description != nil %>
-        <p>About Me: <%=@user.description %><p>
-        <% end %>
-
-        <h2>Listings</h2>
-        <%= render "user_plants", user_plants: @user_plants, address: @address %>
-    <% end %>
+        <% end %>        
+    </div>
 </div>
+
 
