@@ -26,6 +26,11 @@
             background-color:rgba(48, 80, 48, 0.5)
         }
 
+        .link-to a:link, .link-to a:visited, .link-to a:hover, .link-to a:active  {
+            text-decoration: none;
+            color: white;
+        }
+
         .tiles{
             display: flex;
             flex-direction: row;
@@ -36,6 +41,8 @@
             background-color: rgba(48, 80, 48, 0.5);
             .home-card{
                 background-color: rgba(255, 0, 0, 0.3);
+                height: 150px;
+                width: 250px;
                 padding: 20px;
                 margin: 5px;
                 text-align: center; 

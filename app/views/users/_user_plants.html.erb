@@ -8,6 +8,7 @@
                     <h6>
                         <% if plant.user == current_user %>
                         <%= link_to "edit", edit_plant_path(plant.id) %>
+                        <%= link_to "destroy", plant, method: :delete, data: { confirm: 'Are you sure?' } %>
                         <% end %>
                     </h6>
                     <h5 class="card-title"><%= link_to plant.name, plant_path(plant) %>

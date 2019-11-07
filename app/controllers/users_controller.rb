@@ -2,8 +2,9 @@ class UsersController < ApplicationController
     def show
         @id = params[:id]
         @user = User.find(@id)
-        @plant = Plant.all
-        @user_plants = @plant.where(user_id: @id)
+        @plants = Plant.all
+        @user_plants = @plants.where(user_id: @id)
+        
     end
 
     def edit
