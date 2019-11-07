@@ -115,8 +115,14 @@ form {
     margin: 0px 10px;
 }
 
-.create_form {
+.create_form, .show-plant {
     max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.show-plant {
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
