@@ -1,6 +1,6 @@
 .background-container {
     // background-image: url(/assets/images/forest-1.jpg) no-repeat center center fixed;
-    background-image: url(/assets/background-2.jpg);
+    background-image: url(image-path("/assets/background-2.jpg"));
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
