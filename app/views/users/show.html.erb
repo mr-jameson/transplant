@@ -26,8 +26,10 @@
                     </div>
             </div>
         </div>
-        <h5 class="title">Listings</h5>
-        <h6 class = "create_listing"><%= link_to "Create New Listing", new_plant_path %></h6>
+        <div class="listing-headings">
+            <h5 class="title">Listings</h5>
+            <h6><%= link_to "Create New Listing", new_plant_path %></h6>
+        </div>
         <%= render "user_plants", user_plants: @user_plants, address: @address %>
     <% else %>
         <div class="container-fluid">
@@ -50,7 +52,9 @@
                         </ul>
             </div>
         </div>  
+    <div class="listing-headings">
         <h5 class="title">Listings</h5>
+    </div>
         <%= render "user_plants", user_plants: @user_plants, address: @address %>
         <% end %>      
 </div>

@@ -1,6 +1,6 @@
 .background-container {
     // background-image: url(/assets/images/forest-1.jpg) no-repeat center center fixed;
-    background-image: url(image-path("background-2.jpg"));
+    background-image: url(image-path("background-2b.jpg"));
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -17,13 +17,11 @@
             text-align: center;
             margin: 50px 50px 5px 50px;
             padding: 20px;
-            background-color:rgba(48, 80, 48, 0.5)
         }
         .home-subheading{
             text-align: center;
             margin: 5px 50px;
             padding: 20px;
-            background-color:rgba(48, 80, 48, 0.5)
         }
 
         .link-to a:link, .link-to a:visited, .link-to a:hover, .link-to a:active  {
@@ -62,7 +60,7 @@ body {
 }
 
 .card-columns {
-    margin: 10px;
+    margin: 25px;
 }
 
 h4 {
@@ -97,10 +95,12 @@ form {
 
 .card {
     .image {
-        max-width: 600px;
+        max-width: 400px;
+        margin: 15px;
         display: block;
         margin-left: auto;
         margin-right: auto;
+        padding: 10px;
     }
 }
 
@@ -156,4 +156,7 @@ form {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    .listing-headings {
+        margin: 20px 30px;
+    }
 }
