@@ -1,6 +1,6 @@
 
 
-<div class="card-columns"> 
+<div class="card-deck"> 
 <% for plant in user_plants %>
         <div class="card tex-center border-success">
                 <%= image_tag((plant.image if plant.image.attached?), class: "card-img-top stretched-link image", alt: "image of plant") %>

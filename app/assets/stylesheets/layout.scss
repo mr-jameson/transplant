@@ -59,7 +59,7 @@ body {
     padding-bottom: 72px;
 }
 
-.card-columns {
+.card-columns, .card-deck {
     margin: 25px;
 }
 
@@ -159,4 +159,8 @@ form {
     .listing-headings {
         margin: 20px 30px;
     }
+}
+
+.success {
+    padding: 40px 100px;
 }

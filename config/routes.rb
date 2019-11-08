@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   get "/users/:id/edit", to: "users#edit", as: "edit_user"
   get "/payments/success", to: "payments#success", as: "success_payment"
   post "/payments/webhook", to: "payments#webhook", as: "webhook_payment"
-  # get "/users/:id/profile", to: "users#profile", as: "profile" 
 end

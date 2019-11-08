@@ -36,6 +36,8 @@
             <div class="card border-success profile">
                 <% if @user.profile_pic.attached? %>
                     <%= image_tag @user.profile_pic, class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
+                <% else %>
+                    <%= image_tag "profile-avatar.jpg", class: "card-img-top stretched-link image", alt: "Generic avatar profile image" %>
                 <% end %>
                     <div class="card-body">
                         <h5 class="card-title"><%= @user.name %></h5>
