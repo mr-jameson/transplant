@@ -11,7 +11,6 @@ class PaymentsController < ApplicationController
         payment = Stripe::PaymentIntent.retrieve(payment_id)
         plant_id = payment.metadata.plant_id
         user_id = payment.metadata.user_id
-        byebug
 
         Ledger.create(plant_id: plant_id, user_id: user_id, stripe_id: payment.id )
     end
