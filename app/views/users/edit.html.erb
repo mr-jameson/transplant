@@ -1,4 +1,7 @@
-<h4>Edit Profile</h4>
+<div class="title">
+  <h4>Edit Profile</h4>
+</div>
+<div class="create_form">
 <%= form_with model: @user, method: "patch", local: true do |f| %>
     <div class="field">
       <%= f.label :name %><br />
@@ -44,3 +47,4 @@
       <%= f.submit "Update" %>
     </div>
   <% end %>
+  </div>

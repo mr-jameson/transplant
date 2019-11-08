@@ -13,7 +13,5 @@ class PaymentsController < ApplicationController
         user_id = payment.metadata.user_id
 
         Ledger.create(plant_id: plant_id, user_id: user_id, stripe_id: payment.id )
-        status 200
-
     end
 end
