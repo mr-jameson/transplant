@@ -4,7 +4,11 @@
 
 *View live at:*
 
+http://transplant-market.herokuapp.com/
+
 *GitHub Repo:*
+
+https://github.com/mr-jameson/transplant
 
 ---
 
@@ -12,7 +16,7 @@
 
   * [Purpose](#purpose)
     + [Mission Statement](#mission-statement)
-    + [Problem](#problem)
+    + [The Problem](#the-problem)
       - [Carbon Emissions](#carbon-emissions)
       - [Demand for Indoor Plants](#demand-for-indoor-plants)
       - [Existing Marketplaces](#existing-marketplaces)
@@ -22,11 +26,14 @@
   * [Sitemap](#sitemap)
   * [Functionality](#functionality)
     + [Tech-Stack](#functionality)
+    + [Architecture](#arcitecture)
+    + [Models](#models)
+    + [Database](#database)
+        - [Database Relations](#database-relations)
+        - [Entity Relationship Diagram](#entity-relationship-diagram)
     + [Features](#features)
   * [Third Party Services](#third-party-services)
-  * [Database](#database)
-    + [Schema Design](#schema-design)
-    + [Entity Relationship Diagram](#entity-relationship-diagram)
+    + [Stripe](#stripe)
   * [Styling](#styling)
   * [Project Management](#project-management)
     + [Wireframes](#wireframes)
@@ -62,25 +69,25 @@ TransPlant is for anybody who wants to buy or sell potted indoor plants; either 
 Much demand for indoor plants comes from inner city dwellers and offices,who don't have outdoor gardens. 
 
 #### Detailed User Stories
-- As someone who grows plants as a hobby, I want to be able to sell my plants to make a side income
-- As a plant enthusiast, I want to buy potted plants directly from the grower
-- As an interior designer, I want to buy indoor plants at a good price for my clients' offices
-- As a shopper for indoor plants, I want to know how big the plant is that I'm looking at buying
-- As a shopper for indoor plants, I want to know how much light the plant requires to be able to plan the plant location in my space
-- As a shopper for indoor plants, I want to see images of the plant I am looking to buy
-- As a buyer of indoor plants, I want to be able to pay online with my credit card
-As a shopper for indoor plants, I want to know what kind of pot the plant comes with
-- As a shopper for indoor plants, I want to be able to view the available plants in order from lowest cost to highest cost
-- As a shopper for indoor plants, I want to know where the plant is located
-- As a seller of indoor plants, I want to be able to view and edit my current listings
-- As a seller of indoor plants, I want to provide a description of my plant
-- As a user, I want to be able to login to view my listings or to buy plants
-- As a user, I want to be able to edit my profile
-- As a user, I want to be able to recover my password if I can't remember it
+- As someone who grows plants as a hobby, I want to be able to sell my plants to make a side income.
+- As a plant enthusiast, I want to buy potted plants directly from the grower.
+- As an interior designer, I want to buy indoor plants at a good price for my clients' offices.
+- As a shopper for indoor plants, I want to know how big the plant is that I'm looking at buying.
+- As a shopper for indoor plants, I want to know how much light the plant requires to be able to plan the plant location in my space.
+- As a shopper for indoor plants, I want to see images of the plant I am looking to buy.
+- As a buyer of indoor plants, I want to be able to pay online with my credit card.
+As a shopper for indoor plants, I want to know what kind of pot the plant comes with.
+- As a shopper for indoor plants, I want to know where the plant is located.
+- As a seller of indoor plants, I want to be able to view and edit my current listings.
+- As a seller of indoor plants, I want to provide a description of my plant.
+- As a seller of indoor plants, I want to be able to delete my listing.
+- As a user, I want to be able to login to view my listings or to buy plants.
+- As a user, I want to be able to edit my profile.
+- As a user, I want to be able to recover my password if I can't remember it.
 
 
 ### Sitemap
-Insert image
+![sitemap](/docs/Sitemap/sitemap2.png)
 
 ### Functionality
 #### Tech Stack
@@ -88,7 +95,7 @@ The tech stack employed in this Ruby on Rails application is as follows:
 - Rails version 5.2.3 
 - Ruby version 2.6.3
 - Markup language: HTML
-- Styling: CSS
+- Styling: CSS, Bootstrap
 - Database: PostgreSQL
 - Authentication/Authorisation: Devise
 - Cloud storage: s3
@@ -96,57 +103,79 @@ The tech stack employed in this Ruby on Rails application is as follows:
 - Deployment: Heroku
 
 #### Architecture
-This Ruby on Rails application utilises Model View Controller (MVC) architecture. MVC architecture is a way of grouping code into three functionalities which allow web applications to be developed in parallel by multiple developers as well as enabling the code to be easily reused.
+This Ruby on Rails application utilises Model View Controller (MVC) architecture. MVC architecture is a way of grouping code into three functionalities. Grouping code in this pattern allows web applications to be better organised. It allows development to be undertaken in parallel by multiple developers as well as enabling the code to be easily reused.
 
 The Model layer interacts with the database. Any functionality such as creating, reading, updating or deleting data is carried out within the model. The view is the front-end of the application. It takes care of the elements that the user will see and interact with. The controller sits between the model and the view. It handles the HTTP requests and orchestrates view events and model changes accordingly. 
+
+#### Models
+A Model in Rails is a Ruby class that can interact with the database to add records, find particular data you're looking for, update that data, or remove data.
+
+There are multiple models in TransPlant; plant, user, address and ledger - each containing instructions for interacting with their respective databases. Rails creates connections between these models via associations. 
+
+The plant model 'belongs to' the user model and 'has one' address through the user model. These associations are declared in the plant model so that rails knows that the plant model references the user_id foreign key, allowing it to map data between models correctly.
+
+The user model 'has one' address and 'has many' plants. This tells rails that there is a one-to-one relationship between user and address, and a one-to-many relationship between user and plants.
+
+The ledger model records the transactions that have been completed. It 'belongs to' the plant model and the user model, which tells rails that the ledger model references the plant and user foreign keys.
+
+
+
+#### Database
+##### Database Relations
+TransPlant uses PostgreSQL as its database. PostgreSQL is a relational database. A relational database management system organises data into tables, otherwise known as relations. 
+
+The defining feature of a relational database is that the tables can reference other tables via a column containing the primary keys of the other table. The references column values are called the foreign keys. This allows data to be grouped into tables or relations which then reference each other.
+
+The database relations must correspond to the associations setup in the model, as the associations detail the foreign key links between relations. 
+
+There are 3 types of relationships in relational database design:
+
+- One-to-One
+- One-to-Many (or Many-to-One)
+- Many-to-Many
+- Polymorphic One to Many
+
+The Entity Relationship Diagram (ERD) below details the relationships between the tables. The asterisk at the end of the link represents 'many', and the 1 at the end represents 'one'. The relationships are as described in the models section: for example, a user has many plants.
+
+Images are handled by active storage, which allows files to be uploaded into cloud storage. Active storage creates two database relations; active_storage_attachments and active_storage_blobs. A polymorphic association links the image data in these tables to the relevant model.
+
+##### Entity Relationship Diagram
+![ERD](/docs/ERD/TransPlant-ERD.png)
 
 
 #### Features
 - Search Bar
 - Refine Results
 
-#### Models
-Object-relational mapping (ORM) is the link between a relational database management system and your preferred object-oriented programming language. ActiveRecord is an ORM framework used in Rails. It is used to represent models and the associations between these models.
-
-<!-- 
-Complete discussion of the project’s models with an understanding of how its active record associations function -->
-
 ### Third Party Services
-Stripe is an online payment system and is integrated into TransPlant for accepting credit card payments. When a user selects buy on a listed item, they are re-directed to Stripe to complete the purchase.
+#### Stripe
+Collecting credit card details from users is high risk. It is therefore best to outsource the processing of payments to third party applications which have stringent cyber security integration.
 
-### Database
-#### Schema Design
-![ERB](/docs/ERD/TransPlant-ERD.png)
+Transplant integrates Stripe for its online payment system which includes accepting credit card payments. When a user selects buy on a listed item, they are re-directed to Stripe to complete the purchase. If the payment is successful the user will be redirected back to the application.
 
-#### Database Relations
-There are 3 types of relationships in relational database design. They are:
+TransPlant connects to Stripe's API using a publishable and a secret key. A stripe gem has been loaded into the application to facilitate the setup. 
 
-One-to-One
-One-to-Many (or Many-to-One)
-Many-to-Many
-
-<!-- Discuss the database relations to be implemented
-Provides coherent discussion of the database relations, with reference to the ERD -->
-
-<!-- - user_id links to plants where one user has many plants.
-- user_id links to transactions where one user has many transactions
-- user_id links to addresses where one user has one address
-- plant_id links to transactions where one plant has many transactions
-- active_storage_blobs link to record_id and blob_id -->
-
+Webhooks are employed via Stripe to notify our application that a purchase has been made and completed in full. Once the webhook tells TransPlant that a purchase has been completed, the plant listings will be updated so that the purchased plant is removed.
 
 ### Styling
-color scheme
+The CSS Bootstrap framework has been employed to streamline the styling.
+
+Green colours dominate the design which complements the plant theme and the environmental motivation behind the project.
 
 ### Project Management
-
-
 #### Wireframes
-link
+Wireframes were created at the start of the project to plan out the design and features to be built: 
+Refer to link below for wireframes:
+https://drive.google.com/open?id=1i0h7-2Cx8eDy-VxEuXvDDhuJYbHymm2S
+
 
 #### Trello
 Trello has been utilised to manage and track tasks within the project. 
 
-The project is structured to achieve a minimum viable product (MVP) by the end of week 1. To contain the scope of the project, 'Nice to have' features are separated out to be implemented only after MVP has been met.
+View live trello board here:
 
-Tasks are further broken down into; planning, documentation, coding and styling. Planning and documentation are addressed first, followed by coding and then finally styling.
+https://trello.com/b/y99brOZq/transplant
+
+The project was structured to achieve a minimum viable product (MVP) by the end of week 1. To contain the scope of the project, 'Nice to have' features are separated out to be implemented only after MVP has been met.
+
+Tasks are further broken down into; planning, documentation, coding, styling, 'nice to have' and priorities. Planning and documentation are addressed first, followed by coding and then finally styling. Urgent bug fixes are placed in 'priorities' and are to be addressed before moving on. Features that were not essential to the app were placed in 'nice to have' to ensure that time was not wasted on extra features before the app became fully functional.

@@ -6,11 +6,14 @@ class PlantsController < ApplicationController
 
     def index
         @address = Address.all
+
+        # create array which containts only available plants. Achieved by subtracting any plant added to the ledger table after purchase.
         plants_available = Plant.all.ids - Ledger.pluck(:plant_id)
         @plants = Plant.where(id: plants_available)
     end
 
     def new
+        # set variables to allow creation of new plant
         @plant = Plant.new
         @address = Address.all
     end
@@ -68,10 +71,12 @@ class PlantsController < ApplicationController
 
     private
     def plant_params
+        # validate which attributes are allowed for plant
         params.require(:plant).permit(:name, :price, :description, :light, :size, :species, :pot, :postage, :image)
     end
 
     def set_plant
+        # define current plant
         id = params[:id]
         @plant = Plant.find(id)
     end
@@ -85,6 +90,7 @@ class PlantsController < ApplicationController
     end
 
     def translate_params
+        # method for converting price from dollars in view to cents in database
         params[:plant][:price] = (params[:plant][:price].to_f * 100).to_i
     end
 
