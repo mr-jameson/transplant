@@ -170,7 +170,9 @@ https://drive.google.com/open?id=1i0h7-2Cx8eDy-VxEuXvDDhuJYbHymm2S
 
 
 #### Trello
-Trello has been utilised to manage and track tasks within the project. 
+Agile project management was employed throughout the building of the application. Although extensive planning was undertaken in the beginning,the planning was adaptive. The project evolved over its development in response to limited time available to complete the app.
+
+Trello has been utilised to manage and track tasks throughout the project. 
 
 View live trello board here:
 
@@ -178,4 +180,6 @@ https://trello.com/b/y99brOZq/transplant
 
 The project was structured to achieve a minimum viable product (MVP) by the end of week 1. To contain the scope of the project, 'Nice to have' features are separated out to be implemented only after MVP has been met.
 
-Tasks are further broken down into; planning, documentation, coding, styling, 'nice to have' and priorities. Planning and documentation are addressed first, followed by coding and then finally styling. Urgent bug fixes are placed in 'priorities' and are to be addressed before moving on. Features that were not essential to the app were placed in 'nice to have' to ensure that time was not wasted on extra features before the app became fully functional.
+Tasks are further broken down into; planning, documentation, coding, styling, 'nice to have' and priorities. Planning and documentation are addressed first, followed by coding and then finally styling. Urgent bug fixes are placed in 'priorities' and are to be addressed before moving on. 
+
+

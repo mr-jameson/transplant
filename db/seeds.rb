@@ -43,7 +43,7 @@ for listing in listings
         created_at: Time.now,
         postage: "Local Pickup",
         species: listing[:species],
-        pot: listing[:species],
+        pot: listing[:pot],
         light: rand(0..2), #enum 0 low, 1 moderate, 2 bright
         size: rand(0..2), #enum 0 small, 1 medium, 2 large
         user_id: user_ids.sample

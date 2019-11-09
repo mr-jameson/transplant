@@ -66,7 +66,7 @@ class PlantsController < ApplicationController
 
     def destroy
         set_plant.destroy
-        redirect_to user_path
+        redirect_to plants_path
     end
 
     private
